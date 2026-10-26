@@ -80,18 +80,25 @@ nav.links a::before{content:"./";color:var(--fg-dim)}
 .photowrap-hero .pic{aspect-ratio:3/4;overflow:hidden;background:var(--bg-2)}
 .photowrap-hero .pic img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
 .photowrap-hero .cap{margin-top:.35rem;font-size:.62rem;color:var(--fg-dim);text-align:center}
-/* effet photo : anneau rectangulaire pulsé + balayage scanline + statut clignotant (style terminal) */
+/* effet photo (à l'ouverture, une seule fois) : mise au point du flou + balayage + viseur */
 .photowrap-hero .photoframe{position:relative;transition:border-color .2s}
-.photowrap-hero .photoframe::before{content:"";position:absolute;inset:0;border:1px solid var(--green);pointer-events:none;animation:ring-rect 2.6s steps(7,end) infinite}
 .photowrap-hero .pic{position:relative}
-.photowrap-hero .pic::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);opacity:.7;pointer-events:none;animation:scan 3.6s steps(24,end) infinite}
-.photowrap-hero .pic img{transition:filter .25s}
+.photowrap-hero .pic img{backface-visibility:hidden}
 .photowrap-hero .photoframe:hover{border-color:var(--cyan)}
-.photowrap-hero .photoframe:hover .pic img{filter:grayscale(0)}
-.photowrap-hero .cap::before{content:"\25CF ";color:var(--green);animation:blink 1.4s step-end infinite}
-@keyframes ring-rect{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.14,1.1);opacity:0}}
-@keyframes scan{0%{top:0;opacity:0}8%{opacity:.7}92%{opacity:.7}100%{top:calc(100% - 2px);opacity:0}}
-@media(prefers-reduced-motion:reduce){.photowrap-hero .photoframe::before,.photowrap-hero .pic::after,.photowrap-hero .cap::before{animation:none}.photowrap-hero .photoframe::before{opacity:.5}.photowrap-hero .pic::after{display:none}}
+.photo-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan) 30%,var(--cyan) 70%,transparent);box-shadow:0 0 8px var(--cyan);z-index:3;opacity:0;pointer-events:none}
+.focus-bracket{position:absolute;top:30%;left:50%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:4;pointer-events:none;opacity:0}
+.focus-bracket:before,.focus-bracket:after,.focus-bracket span:before,.focus-bracket span:after{content:"";position:absolute;width:14px;height:14px;border:0 solid var(--cyan)}
+.focus-bracket:before{top:0;left:0;border-top-width:2px;border-left-width:2px}
+.focus-bracket:after{top:0;right:0;border-top-width:2px;border-right-width:2px}
+.focus-bracket span:before{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.focus-bracket span:after{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+.photowrap-hero.fx .pic img{animation:focusClear 1.2s cubic-bezier(.22,1,.36,1) .15s backwards}
+.photowrap-hero.fx .photo-scan{animation:scanPhoto .9s ease-in-out .3s both}
+.photowrap-hero.fx .focus-bracket{animation:bracketPulse 1.4s ease-out .5s both}
+@keyframes focusClear{from{filter:blur(10px) grayscale(.15);transform:scale(1.03)}to{filter:blur(0) grayscale(.15);transform:scale(1)}}
+@keyframes scanPhoto{0%{top:0;opacity:.8}to{top:100%;opacity:0}}
+@keyframes bracketPulse{0%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}20%{opacity:1;transform:translate(-50%,-50%) scale(1)}60%{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.photowrap-hero.fx .pic img{animation:none}.photo-scan,.focus-bracket{display:none}}
 @media(max-width:560px){.herorow{flex-direction:column-reverse;align-items:stretch;gap:1.6rem}.photowrap-hero{width:min(11.5rem,62vw);align-self:center;margin:.6rem auto .4rem}.hero{padding-bottom:1.6rem}}
 
 /* sections */
@@ -270,7 +277,7 @@ html.welcomed #welcome{display:none!important}
         <div class="fl"><span class="fk dim" data-k="f.status">status</span><span class="g">= "available for internships"</span></div>
       </div>
       <div class="photowrap-hero">
-        <div class="photoframe"><div class="pic"><img src="assets/photo.jpg" alt="Portrait d'Otmane Mabchour"></div><div class="cap" data-k="hero.fig">whoami.jpg</div></div>
+        <div class="photoframe"><div class="pic"><img src="assets/photo.jpg" alt="Portrait d'Otmane Mabchour"><div class="photo-scan"></div><div class="focus-bracket"><span></span></div></div><div class="cap" data-k="hero.fig">whoami.jpg</div></div>
       </div>
     </div>
   </div>
@@ -638,8 +645,9 @@ function startRain(){
   requestAnimationFrame(()=>cv.classList.add('on'));
 }
 
+function photoFx(){ const el=document.querySelector('.photowrap-hero'); if(el) el.classList.add('fx'); }
 prepSections();
-try{ startWelcome(()=>{ runIntro(); watchSections(); }); }catch(err){ const w0=document.getElementById('welcome'); if(w0) w0.remove(); document.body.style.overflow=''; runIntro(); watchSections(); }
+try{ startWelcome(()=>{ photoFx(); runIntro(); watchSections(); }); }catch(err){ const w0=document.getElementById('welcome'); if(w0) w0.remove(); document.body.style.overflow=''; photoFx(); runIntro(); watchSections(); }
 startRain();
 </script>
 </body>
