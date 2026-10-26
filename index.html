@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>otmane@enseeiht:~/portfolio</title>
+<meta name="description" content="Portfolio d'Otmane MABCHOUR, élève-ingénieur Sciences du numérique à l'ENSEEIHT.">
+<meta property="og:title" content="Otmane MABCHOUR — Portfolio">
+<meta property="og:image" content="assets/photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('term-theme');if(t==='light'||(!t&&matchMedia('(prefers-color-scheme: light)').matches && !matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('light')}catch(e){}</script>
+<script>try{if(window.name==='wlc1'||sessionStorage.getItem('welcomed')==='1')document.documentElement.classList.add('welcomed')}catch(e){if(window.name==='wlc1')document.documentElement.classList.add('welcomed')}</script>
+<style>
+:root{
+  --bg:#1A1B26; --bg-2:#20212E; --panel:#16171F; --fg:#C8CCE0; --fg-dim:#6A7190; --fg-bright:#F2F4FF;
+  --green:#8FD6A0; --cyan:#7FCFE0; --purple:#B79CE8; --amber:#E8B06B; --red:#E88080; --rule:#2E3042;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+html.light{
+  --bg:#F4F4F0; --bg-2:#ECECE6; --panel:#FFFFFF; --fg:#2B2E3A; --fg-dim:#848A9C; --fg-bright:#111320;
+  --green:#1E8E5A; --cyan:#0E7FA0; --purple:#7A50C4; --amber:#A8650E; --red:#C23A3A; --rule:#DADAD2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scrollbar-gutter:stable;scroll-behavior:smooth;scroll-padding-top:4rem}
+body{font-family:var(--mono);background:var(--bg);color:var(--fg);line-height:1.7;font-size:15px}
+a{color:inherit}
+img{display:block;max-width:100%}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.3rem}
+.wrap-wide{max-width:60rem;margin:0 auto;padding:0 1.3rem}
+.g{color:var(--green)}.c{color:var(--cyan)}.p{color:var(--purple)}.a{color:var(--amber)}.dim{color:var(--fg-dim)}.r{color:var(--red)}
+.prompt{color:var(--green)}.path{color:var(--cyan)}
+
+/* fenêtre terminal */
+header{position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--rule)}
+.titlebar{display:flex;align-items:center;gap:.6rem;height:2.4rem;padding:0 1rem;border-bottom:1px solid var(--rule)}
+.dots{display:flex;gap:.4rem}
+.dots span{width:.6rem;height:.6rem;border-radius:50%}
+.dots span:nth-child(1){background:#E8807F}.dots span:nth-child(2){background:#E8C07F}.dots span:nth-child(3){background:#8FD6A0}
+.titlebar .ttl{font-size:.75rem;color:var(--fg-dim);margin:0 auto}
+.bar{display:flex;align-items:center;justify-content:space-between;height:2.9rem;padding:0 1rem;gap:1rem;flex-wrap:wrap}
+nav.links{display:none;align-items:center;gap:1.3rem;font-size:.8rem}
+nav.links a{text-decoration:none;color:var(--fg-dim)}
+nav.links a:hover{color:var(--cyan)}
+nav.links a::before{content:"./";color:var(--fg-dim)}
+.tools{display:flex;align-items:center;gap:.7rem}
+.langs{display:flex;gap:2px;font-size:.72rem}
+.langs button{padding:.25rem .45rem;border:1px solid var(--rule);color:var(--fg-dim)}
+.langs button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.themebtn{border:1px solid var(--rule);padding:.25rem .5rem;font-size:.72rem;color:var(--fg-dim)}
+.themebtn:hover{border-color:var(--cyan);color:var(--cyan)}
+.burger{border:1px solid var(--rule);padding:.25rem .5rem;font-size:.8rem}
+@media(min-width:840px){nav.links{display:flex}.burger{display:none}}
+#mmenu{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .22s ease;border-top:1px solid var(--rule)}
+#mmenu.open{grid-template-rows:1fr}
+#mmenu>div{overflow:hidden;padding:0 1.3rem}
+#mmenu a{display:block;padding:.7rem 0;border-bottom:1px solid var(--rule);color:var(--fg-dim);text-decoration:none;font-size:.85rem}
+@media(min-width:840px){#mmenu{display:none}}
+
+/* hero */
+.hero{padding:2.6rem 0 2.2rem}
+.hero .ln{margin-bottom:.35rem;font-size:.92rem}
+.hero h1{font-size:clamp(1.5rem,4.4vw,2.1rem);font-weight:700;color:var(--fg-bright);margin:.6rem 0;letter-spacing:-.01em}
+.cursor{display:inline-block;width:.55em;height:1.05em;background:var(--fg-bright);vertical-align:text-bottom;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.typed-wait{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
+.hero .out{color:var(--fg);max-width:60ch;margin:.3rem 0 1.1rem;font-size:.92rem}
+.herorow{display:flex;gap:2rem;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.fieldblock{border:1px solid var(--rule);background:var(--panel);padding:.9rem 1.1rem;font-size:.85rem;flex:1 1 20rem}
+.fieldblock .fl{display:flex;gap:.6rem;padding:.15rem 0}
+.fieldblock .fk{color:var(--fg-dim);width:6.2rem;flex:none}
+.photowrap-hero{width:12rem;flex:none;margin-left:auto;margin-top:0}
+@media(min-width:900px){.photowrap-hero{margin-top:-4.5rem}}
+.photowrap-hero .photoframe{border:1px solid var(--rule);padding:.35rem;background:var(--panel)}
+.photowrap-hero .pic{aspect-ratio:3/4;overflow:hidden;background:var(--bg-2)}
+.photowrap-hero .pic img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
+.photowrap-hero .cap{margin-top:.35rem;font-size:.62rem;color:var(--fg-dim);text-align:center}
+/* effet photo : anneau rectangulaire pulsé + balayage scanline + statut clignotant (style terminal) */
+.photowrap-hero .photoframe{position:relative;transition:border-color .2s}
+.photowrap-hero .photoframe::before{content:"";position:absolute;inset:0;border:1px solid var(--green);pointer-events:none;animation:ring-rect 2.6s steps(7,end) infinite}
+.photowrap-hero .pic{position:relative}
+.photowrap-hero .pic::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);opacity:.7;pointer-events:none;animation:scan 3.6s steps(24,end) infinite}
+.photowrap-hero .pic img{transition:filter .25s}
+.photowrap-hero .photoframe:hover{border-color:var(--cyan)}
+.photowrap-hero .photoframe:hover .pic img{filter:grayscale(0)}
+.photowrap-hero .cap::before{content:"\25CF ";color:var(--green);animation:blink 1.4s step-end infinite}
+@keyframes ring-rect{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.14,1.1);opacity:0}}
+@keyframes scan{0%{top:0;opacity:0}8%{opacity:.7}92%{opacity:.7}100%{top:calc(100% - 2px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.photowrap-hero .photoframe::before,.photowrap-hero .pic::after,.photowrap-hero .cap::before{animation:none}.photowrap-hero .photoframe::before{opacity:.5}.photowrap-hero .pic::after{display:none}}
+@media(max-width:560px){.herorow{flex-direction:column-reverse;align-items:stretch;gap:1.6rem}.photowrap-hero{width:min(11.5rem,62vw);align-self:center;margin:.6rem auto .4rem}.hero{padding-bottom:1.6rem}}
+
+/* sections */
+.sec{padding:2.6rem 0;border-top:1px dashed var(--rule)}
+.sec:nth-of-type(even){background:var(--bg-2)}
+.cmdline{display:flex;flex-wrap:wrap;gap:.45rem;align-items:baseline;margin-bottom:1.3rem;font-size:.92rem}
+.lede{color:var(--fg-dim);margin:-.7rem 0 1.4rem;max-width:58ch;font-size:.88rem}
+
+/* fichier skills */
+.skillrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;border:1px solid var(--rule);background:var(--panel)}
+.skillcol{padding:.9rem 1.1rem;border-left:1px solid var(--rule)}
+.skillcol:first-child{border-left:0}
+.skillcol h3{font-size:.72rem;color:var(--fg-dim);margin-bottom:.5rem}
+.skillcol h3::before{content:"# ";color:var(--rule)}
+.skillcol ul li{display:flex;align-items:center;gap:.5rem;font-size:.86rem;padding:.2rem 0}
+.skico{width:1rem;height:1rem;flex:none;object-fit:contain}
+.skico.badge{display:grid;place-items:center;font-size:.55rem;font-weight:700;border-radius:3px;background:var(--rule);color:var(--fg)}
+
+/* sorties / cartes */
+.out-block{border:1px solid var(--rule);background:var(--panel);padding:1.1rem 1.25rem;margin-bottom:.9rem}
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;align-items:baseline}
+.row h3{font-weight:600;color:var(--fg-bright);font-size:.95rem}
+.row .date{color:var(--amber);font-size:.78rem;white-space:nowrap}
+.sub{display:block;margin-top:.1rem;color:var(--cyan);font-size:.8rem}
+.out-block p{margin-top:.5rem;color:var(--fg);font-size:.86rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.tags li{font-size:.72rem;border:1px solid var(--rule);padding:.12rem .45rem;color:var(--fg-dim)}
+.tags li::before{content:"#"}
+.project-grid{display:grid;gap:.9rem}
+@media(min-width:700px){.project-grid{grid-template-columns:1fr 1fr}}
+.project-grid .out-block{margin-bottom:0}
+.thumb{aspect-ratio:16/10;background:var(--bg-2);border:1px solid var(--rule);margin-bottom:.8rem;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* carrière */
+.ctabar{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.6rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--rule);padding:.5rem .85rem;font-size:.82rem;text-decoration:none;color:var(--fg)}
+.btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#0C2015}
+.btn.primary:hover{filter:brightness(1.08);color:#0C2015}
+
+/* mobilité */
+.langtable{border:1px solid var(--rule);background:var(--panel);margin-bottom:1.5rem;font-size:.86rem}
+.langtable .lr{display:flex;justify-content:space-between;padding:.6rem .95rem;border-top:1px solid var(--rule)}
+.langtable .lr:first-child{border-top:0}
+.langtable .lr span{color:var(--green)}
+
+/* contact */
+.contact-grid{display:grid;gap:.9rem}
+@media(min-width:620px){.contact-grid{grid-template-columns:repeat(3,1fr)}}
+.contact-grid .k{color:var(--fg-dim);font-size:.72rem;display:block;margin-bottom:.3rem}
+.contact-grid .k::before{content:"$ "}
+.contact-grid a.v{font-size:.88rem;word-break:break-word;text-decoration:none;color:var(--cyan);border-bottom:1px solid transparent}
+.contact-grid a.v:hover{border-color:var(--cyan)}
+
+/* photo */
+.photowrap{width:7.5rem;float:right;margin:.2rem 0 1rem 1.2rem}
+.photoframe{border:1px solid var(--rule);padding:.35rem;background:var(--panel)}
+.photoframe .pic{aspect-ratio:3/4;overflow:hidden;background:var(--bg-2)}
+.photoframe img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
+.photoframe .cap{margin-top:.35rem;font-size:.62rem;color:var(--fg-dim);text-align:center}
+
+footer{border-top:1px solid var(--rule);padding:1.6rem 0;font-size:.75rem;color:var(--fg-dim)}
+footer .wrap-wide{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem}
+.ph{color:var(--fg-dim)}
+
+/* écran de bienvenue (4 langues) + frappe au défilement des sections */
+#welcome{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:1.3rem;transition:opacity .5s ease,visibility .5s ease;}
+#welcome.out{opacity:0;visibility:hidden}
+html.welcomed #welcome{display:none!important}
+.wterm{width:100%;max-width:40rem;border:1px solid var(--rule);background:var(--panel)}
+.wbody{padding:1.2rem 1.4rem 1.4rem;min-height:12.5rem;font-size:.92rem}
+.wl{display:flex;gap:.6rem;margin:.65rem 0;min-height:1.7em;align-items:baseline}
+.wl .wt{color:var(--fg-bright)}
+.wl[dir=rtl] .wt{text-align:right}
+.wctl{display:flex;flex-wrap:wrap;gap:.7rem 1rem;align-items:center;justify-content:space-between;padding:.8rem 1.4rem 1rem;border-top:1px dashed var(--rule)}
+.wk{font-size:.72rem;color:var(--fg-dim);flex:1 1 12rem}
+.wopts{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.wlangs{display:flex}
+.wctl button{font-size:.72rem;color:var(--fg-dim);border:1px solid var(--rule);padding:.25rem .7rem;background:var(--bg)}
+.wlangs button+button{margin-left:-1px}
+.wctl button:hover{color:var(--cyan);border-color:var(--cyan);position:relative}
+.wlangs button.on{background:var(--cyan);color:#06181A;border-color:var(--cyan);position:relative}
+.wskip.ready{color:var(--green);border-color:var(--green);animation:wready 1.2s step-end infinite}
+@keyframes wready{50%{box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 35%,transparent)}}
+.js-type .rv{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.js-type .rv.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){#welcome{display:none}.js-type .rv{opacity:1;transform:none}}
+
+/* fond : pluie de code (canvas), ondes de signal dans le hero, sections alternées */
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+#rain.on{opacity:1}
+.hero{position:relative;overflow:hidden}
+.hero .wrap-wide{position:relative;z-index:1}
+.sigwave{position:absolute;inset:auto 0 0 0;width:100%;height:150px;opacity:.55;pointer-events:none}
+.sigwave path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.sigwave .w1{stroke:var(--cyan);stroke-dasharray:3 7;animation:sigflow 7s linear infinite}
+.sigwave .w2{stroke:var(--purple);stroke-dasharray:12 9;opacity:.7;animation:sigflow 11s linear infinite reverse}
+.sigwave .w3{stroke:var(--green);stroke-dasharray:1 10;opacity:.6;animation:sigflow 5s linear infinite}
+@keyframes sigflow{to{stroke-dashoffset:-200}}
+.sec:nth-of-type(even){background:color-mix(in srgb,var(--bg-2) 60%,transparent)}
+@media(prefers-reduced-motion:reduce){.sigwave path{animation:none}#rain{display:none}}
+</style>
+</head>
+<body>
+
+<div id="welcome" role="dialog" aria-label="Bienvenue">
+  <div class="wterm">
+    <div class="titlebar"><div class="dots"><span></span><span></span><span></span></div><span class="ttl">otmane@enseeiht: ~/welcome</span></div>
+    <div class="wbody">
+      <div class="wl"><span class="prompt">$</span><span class="wt" lang="fr"></span></div>
+      <div class="wl"><span class="prompt">$</span><span class="wt" lang="en"></span></div>
+      <div class="wl"><span class="prompt">$</span><span class="wt" lang="es"></span></div>
+      <div class="wl" dir="rtl"><span class="prompt">$</span><span class="wt" lang="ar"></span></div>
+    </div>
+    <div class="wctl">
+      <span class="wk" id="whint"></span>
+      <div class="wopts">
+        <div class="wlangs" role="group" aria-label="Langue">
+          <button type="button" data-wlang="fr">fr</button><button type="button" data-wlang="en">en</button><button type="button" data-wlang="es">es</button>
+        </div>
+        <button type="button" id="wtheme" aria-label="Thème"></button>
+        <button type="button" class="wskip">enter ↵</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="titlebar"><div class="dots"><span></span><span></span><span></span></div><span class="ttl">otmane@enseeiht: ~/portfolio</span></div>
+  <div class="wrap-wide bar">
+    <nav class="links" aria-label="Navigation principale">
+      <a href="#engineering" data-k="nav.eng">engineering</a>
+      <a href="#career" data-k="nav.car">career</a>
+      <a href="#mobility" data-k="nav.mob">mobility</a>
+      <a href="#engagement" data-k="nav.enga">engagement</a>
+      <a href="#activities" data-k="nav.act">activities</a>
+      <a href="#contact" data-k="nav.ct">contact</a>
+    </nav>
+    <div class="tools">
+      <div class="langs" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">fr</button><button data-lang="en">en</button><button data-lang="es">es</button>
+      </div>
+      <button class="themebtn" id="themebtn" data-k="theme.btn">--dark</button>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">menu</button>
+    </div>
+  </div>
+  <div id="mmenu"><div>
+    <a href="#engineering" data-k="nav.eng">engineering</a>
+    <a href="#career" data-k="nav.car">career</a>
+    <a href="#mobility" data-k="nav.mob">mobility</a>
+    <a href="#engagement" data-k="nav.enga">engagement</a>
+    <a href="#activities" data-k="nav.act">activities</a>
+    <a href="#contact" data-k="nav.ct">contact</a>
+  </div></div>
+</header>
+
+<section class="hero">
+  <svg class="sigwave" viewBox="0 0 1000 140" preserveAspectRatio="none" aria-hidden="true">
+    <path class="w1" d="M0,90 C 100,20 200,160 300,90 C 400,20 500,160 600,90 C 700,20 800,160 900,90 C 950,60 980,110 1000,90"/>
+    <path class="w2" d="M0,110 C 120,60 220,150 340,100 C 460,50 560,150 680,100 C 800,50 900,140 1000,100"/>
+    <path class="w3" d="M0,70 C 150,120 250,20 400,70 C 550,120 650,20 800,70 C 900,105 960,50 1000,70"/>
+  </svg>
+  <div class="wrap-wide">
+    <div class="ln"><span class="prompt">otmane@enseeiht</span><span class="dim">:</span><span class="path">~</span><span class="dim">$ </span><span id="typed1"></span></div>
+    <h1 id="typed1out" class="typed-wait">Otmane Mabchour — <span class="c" data-k="hero.title">Élève-ingénieur, Sciences du numérique</span></h1>
+
+    <div class="ln" style="margin-top:1rem"><span class="prompt">otmane@enseeiht</span><span class="dim">:</span><span class="path">~</span><span class="dim">$ </span><span id="typed2"></span></div>
+    <p class="out typed-wait" id="typed2out" data-k="hero.role">Je construis des systèmes qui relient capteurs, code et monde réel : électronique embarquée, traitement de données, prototypage.</p>
+
+    <div class="herorow">
+      <div class="fieldblock">
+        <div class="fl"><span class="fk dim" data-k="f.school">school</span><span class="c">= "ENSEEIHT · N7"</span></div>
+        <div class="fl"><span class="fk dim" data-k="f.loc">location</span><span class="c">= "Toulouse, France"</span></div>
+        <div class="fl"><span class="fk dim" data-k="f.langs">languages</span><span class="c">= ["AR", "FR", "EN", "ES"]</span></div>
+        <div class="fl"><span class="fk dim" data-k="f.status">status</span><span class="g">= "available for internships"</span></div>
+      </div>
+      <div class="photowrap-hero">
+        <div class="photoframe"><div class="pic"><img src="assets/photo.jpg" alt="Portrait d'Otmane Mabchour"></div><div class="cap" data-k="hero.fig">whoami.jpg</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="engineering">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">engineering.md</span></div>
+    <p class="lede" data-k="eng.lede"># Les outils que j'utilise au quotidien, et ce que j'ai construit avec.</p>
+
+    <div class="skillrow">
+      <div class="skillcol"><h3 data-k="eng.s1">systèmes</h3>
+        <ul>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" class="skico"><span>Python</span></li>
+          <li><span class="skico badge">Ad</span><span>Ada</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" class="skico"><span>Linux</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" class="skico"><span>Git</span></li>
+        </ul>
+      </div>
+      <div class="skillcol"><h3 data-k="eng.s2">data &amp; scientifique</h3>
+        <ul>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="" class="skico"><span>NumPy</span></li>
+          <li><img src="https://cdn.simpleicons.org/python/11557c" alt="" class="skico"><span>Matplotlib</span></li>
+          <li><span class="skico badge">DB</span><span>SQL</span></li>
+        </ul>
+      </div>
+      <div class="skillcol"><h3 data-k="eng.s3">électronique &amp; prototypage</h3>
+        <ul>
+          <li><span class="skico badge">Sl</span><span>Simulink</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="" class="skico"><span>Matlab</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cmdline" style="margin-top:1.8rem"><span class="prompt">$</span><span>ls</span> <span class="c">projects/</span></div>
+    <div class="project-grid">
+      <div class="out-block">
+        <div class="thumb"><img src="assets/projet1.jpg" alt="Suiveur solaire" onerror="this.closest('.thumb').style.display='none'"></div>
+        <div class="row"><h3 data-k="p1.t">TIPE — Suiveur solaire</h3></div>
+        <p data-k="p1.d">Panneau orienté sur un seul axe vers la source lumineuse la plus forte : pont en H, moteur, deux photorésistances.</p>
+        <ul class="tags"><li>arduino</li><li>cpp</li><li>capteurs</li></ul>
+      </div>
+      <div class="out-block">
+        <div class="thumb"><img src="assets/projet2.jpg" alt="" onerror="this.closest('.thumb').style.display='none'"></div>
+        <div class="row"><h3 class="ph" data-k="pp.t1">[nom_du_projet]</h3></div>
+        <p class="ph" data-k="pp.d1">[Le besoin, ta solution, le résultat obtenu en 2–3 lignes.]</p>
+        <ul class="tags"><li class="ph" data-k="pp.tag">[techno]</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="career">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">career.json</span></div>
+    <div class="ctabar">
+      <a class="btn primary" href="assets/CV_FR.pdf" download data-k="car.cvfr">./CV_FR.pdf</a>
+      <a class="btn" href="assets/CV_EN.pdf" download data-k="car.cven">./CV_EN.pdf</a>
+      <a class="btn" href="https://www.linkedin.com/in/otmane-mabchour-6b2862426" target="_blank" rel="noopener noreferrer">linkedin ↗</a>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3>ENSEEIHT — INP Toulouse</h3><span class="date">2026 — 2029</span></div>
+      <span class="sub" data-k="car.form1">Science du numérique</span>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3 data-k="car.form2">Classe préparatoire scientifique</h3><span class="date">2024 — 2026</span></div>
+      <span class="sub">Lycée Mohamed V — MP* · Lycée technique Mohammedia — MPSI</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mobility">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">mobility.yml</span></div>
+    <p class="lede" data-k="mob.lede"># langues parlées et projet de mobilité à l'international</p>
+    <div class="langtable">
+      <div class="lr"><b data-k="l.ar">arabe</b><span>native</span></div>
+      <div class="lr"><b data-k="l.fr">français</b><span>B1</span></div>
+      <div class="lr"><b data-k="l.en">anglais</b><span>B2</span></div>
+      <div class="lr"><b data-k="l.es">espagnol</b><span>A1</span></div>
+    </div>
+    <div class="out-block">
+      <h3 class="ph" data-k="mob.p1">[ton objectif : semestre, année de césure, double diplôme…]</h3>
+      <p class="ph" data-k="mob.p2">[destinations visées et ce que cette mobilité t'apporterait]</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="engagement">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>tail</span> <span class="c">engagement.log</span></div>
+    <p class="lede" data-k="enga.lede"># événements auxquels je participe en dehors des cours</p>
+    <div class="out-block">
+      <div class="row"><h3 data-k="enga.e1t">Festival Futurs proches</h3><span class="date">oct 2026</span></div>
+      <span class="sub">Toulouse</span>
+      <p data-k="enga.e1p">Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.</p>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3 data-k="enga.e2t">Le Procès de King-Kong</h3><span class="date">sept 2026</span></div>
+      <span class="sub">Toulouse</span>
+      <p data-k="enga.e2p">Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="activities">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">activities.txt</span></div>
+    <div class="out-block">
+      <h3 class="ph" data-k="act.p1">[ta passion principale]</h3>
+      <p class="ph" data-k="act.p2">[niveau, durée de pratique, ce que ça t'apporte]</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>./</span><span class="c">contact.sh</span></div>
+    <p class="lede" data-k="ct.lede"># pour un stage, un projet ou simplement échanger</p>
+    <div class="contact-grid">
+      <div class="out-block"><span class="k" data-k="ct.mail">mail</span><a class="v" href="mailto:othmanmabchour40@gmail.com">othmanmabchour40@gmail.com</a></div>
+      <div class="out-block"><span class="k" data-k="ct.tel">tel</span><a class="v" href="tel:+33758571954">07 58 57 19 54</a></div>
+      <div class="out-block"><span class="k">linkedin</span><a class="v" href="https://www.linkedin.com/in/otmane-mabchour-6b2862426" target="_blank" rel="noopener noreferrer">otmane-mabchour</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap-wide">
+    <span>© 2026 otmane_mabchour — exit 0</span>
+    <span data-k="foot.made">ENSEEIHT · Toulouse</span>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu');
+burger.addEventListener('click',()=>{const o=mmenu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mmenu.classList.remove('open');burger.setAttribute('aria-expanded','false')}));
+
+/* thème clair / sombre */
+const themebtn=document.getElementById('themebtn');
+function syncThemeLabel(){themebtn.dataset.k = document.documentElement.classList.contains('light') ? 'theme.btn.light' : 'theme.btn'}
+themebtn.addEventListener('click',()=>{
+  const l=document.documentElement.classList.toggle('light');
+  try{localStorage.setItem('term-theme', l?'light':'dark')}catch(e){}
+  syncThemeLabel(); applyLangToThemeBtn();
+});
+
+/* animation de frappe (whoami / cat about.md) */
+function typeLine(cmdEl, outEl, cmdText, cb){
+  cmdEl.textContent='';
+  let i=0;
+  const cur=document.createElement('span'); cur.className='cursor';
+  cmdEl.after(cur);
+  (function step(){
+    if(i<=cmdText.length){ cmdEl.textContent=cmdText.slice(0,i); i++; setTimeout(step,62); }
+    else { cur.remove(); outEl.classList.remove('typed-wait'); if(cb) cb(); }
+  })();
+}
+function runIntro(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const c1=document.getElementById('typed1'), o1=document.getElementById('typed1out');
+  const c2=document.getElementById('typed2'), o2=document.getElementById('typed2out');
+  if(reduce){ c1.textContent='whoami'; c2.textContent='cat about.md'; o1.classList.remove('typed-wait'); o2.classList.remove('typed-wait'); return; }
+  typeLine(c1,o1,'whoami',()=>{ setTimeout(()=>typeLine(c2,o2,'cat about.md'),550) });
+}
+
+/* traductions */
+const D={
+ 'nav.eng':['engineering','engineering','engineering'],'nav.car':['career','career','career'],
+ 'nav.mob':['mobility','mobility','mobility'],'nav.enga':['engagement','engagement','engagement'],
+ 'nav.act':['activities','activities','activities'],'nav.ct':['contact','contact','contact'],
+ 'theme.btn':['--dark','--dark','--dark'],'theme.btn.light':['--light','--light','--light'],
+ 'hero.role':["Je construis des systèmes qui relient capteurs, code et monde réel : électronique embarquée, traitement de données, prototypage.",
+   "I build systems that connect sensors, code and the real world: embedded electronics, data processing, prototyping.",
+   "Construyo sistemas que conectan sensores, código y el mundo real: electrónica embebida, procesamiento de datos, prototipado."],
+ 'hero.title':['Élève-ingénieur, Sciences du numérique','Engineering student, Digital Sciences','Estudiante de ingeniería, Ciencias Digitales'],
+ 'hero.fig':['whoami.jpg','whoami.jpg','quiensoy.jpg'],
+ 'f.school':['school','school','school'],'f.loc':['location','location','location'],
+ 'f.langs':['languages','languages','languages'],'f.status':['status','status','status'],
+ 'eng.lede':["# les outils que j'utilise au quotidien, et ce que j'ai construit avec",
+   "# the tools I use day to day, and what I have built with them","# las herramientas que uso a diario, y lo que he construido con ellas"],
+ 'eng.s1':['systèmes','systems','sistemas'],'eng.s2':['data & scientifique','data & science','datos y ciencia'],
+ 'eng.s3':['électronique & prototypage','electronics & prototyping','electrónica y prototipado'],
+ 'p1.t':['TIPE — Suiveur solaire','Capstone — Solar tracker','Proyecto — Seguidor solar'],
+ 'p1.d':['Panneau orienté sur un seul axe vers la source lumineuse la plus forte : pont en H, moteur, deux photorésistances.',
+   'Panel oriented on a single axis toward the strongest light source: H-bridge, motor, two photoresistors.',
+   'Panel orientado en un solo eje hacia la fuente de luz más intensa: puente H, motor, dos fotorresistencias.'],
+ 'pp.t1':['[nom_du_projet]','[project_name]','[nombre_del_proyecto]'],
+ 'pp.d1':['[Le besoin, ta solution, le résultat obtenu en 2–3 lignes.]','[The need, your solution, the result — 2–3 lines.]','[La necesidad, tu solución, el resultado en 2–3 líneas.]'],
+ 'pp.tag':['[techno]','[tech]','[tecnología]'],
+ 'car.cvfr':['./CV_FR.pdf','./CV_FR.pdf','./CV_FR.pdf'],'car.cven':['./CV_EN.pdf','./CV_EN.pdf','./CV_EN.pdf'],
+ 'car.form1':['Science du numérique','Digital Sciences','Ciencias Digitales'],
+ 'car.form2':['Classe préparatoire scientifique','Preparatory classes','Clases preparatorias'],
+ 'mob.lede':['# langues parlées et projet de mobilité à l\u2019international','# languages spoken and international mobility plans','# idiomas hablados y planes de movilidad internacional'],
+ 'l.ar':['arabe','arabic','árabe'],'l.fr':['français','french','francés'],'l.en':['anglais','english','inglés'],'l.es':['espagnol','spanish','español'],
+ 'mob.p1':['[ton objectif : semestre, année de césure, double diplôme…]','[your goal: a semester, gap year, double degree…]','[tu objetivo: un semestre, año sabático, doble titulación…]'],
+ 'mob.p2':['[destinations visées et ce que cette mobilité t\u2019apporterait]','[target destinations and what this mobility would bring you]','[destinos previstos y lo que esta movilidad te aportaría]'],
+ 'enga.lede':['# événements auxquels je participe en dehors des cours','# events I take part in outside of class','# eventos en los que participo fuera de clase'],
+ 'enga.e1t':['Festival Futurs proches','Near Futures Festival','Festival Futuros Próximos'],
+ 'enga.e1p':["Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.",
+   'This free event offers hands-on workshops, talks and artistic activities to engage students, university staff and the public around climate and solidarity issues.',
+   'Este evento gratuito ofrece talleres prácticos, debates y actividades artísticas para movilizar a estudiantes, personal universitario y al público en torno al clima y la solidaridad.'],
+ 'enga.e2t':['Le Procès de King-Kong','The Trial of King Kong','El Juicio de King-Kong'],
+ 'enga.e2p':['Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.',
+   'An interactive play for students that unfolds like a courtroom, with the audience taking part.',
+   'Una obra de teatro interactiva para estudiantes que se desarrolla como un juicio en el que participa el público.'],
+ 'act.p1':['[ta passion principale]','[your main passion]','[tu pasión principal]'],
+ 'act.p2':['[niveau, durée de pratique, ce que ça t\u2019apporte]','[level, years of practice, what it brings you]','[nivel, años de práctica, lo que te aporta]'],
+ 'ct.lede':['# pour un stage, un projet ou simplement échanger','# for an internship, a project, or just to say hello','# para unas prácticas, un proyecto o simplemente para saludar'],
+ 'ct.mail':['mail','mail','correo'],'ct.tel':['tel','tel','tel'],
+ 'foot.made':['ENSEEIHT · Toulouse','ENSEEIHT · Toulouse','ENSEEIHT · Toulouse']
+};
+function applyLangToThemeBtn(){
+  const l=currentLang, i={fr:0,en:1,es:2}[l];
+  const k=themebtn.dataset.k; if(D[k]) themebtn.textContent=D[k][i];
+}
+let currentLang='fr';
+function setLang(l){
+  currentLang=l;
+  const i={fr:0,en:1,es:2}[l];
+  document.querySelectorAll('[data-k]').forEach(el=>{const k=el.dataset.k; if(D[k]) el.textContent=D[k][i]});
+  document.documentElement.lang=l;
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on', b.dataset.lang===l));
+  applyLangToThemeBtn();
+  try{localStorage.setItem('langv3',l)}catch(e){}
+}
+document.querySelectorAll('.langs button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+syncThemeLabel();
+let savedLang='fr';try{savedLang=localStorage.getItem('langv3')||'fr'}catch(e){}
+setLang(savedLang);
+/* ---- écran de bienvenue : 4 langues, tapé comme dans un terminal ---- */
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let welcomeSkip=false;
+const GREET=[
+  'Bonjour, bienvenue dans le portfolio de Mabchour Otmane',
+  'Hello, welcome to Mabchour Otmane\u2019s portfolio',
+  'Hola, bienvenido al portfolio de Mabchour Otmane',
+  '\u0645\u0631\u062D\u0628\u064B\u0627\u060C \u0623\u0647\u0644\u064B\u0627 \u0628\u0643\u0645 \u0641\u064A \u0645\u0644\u0641 \u0623\u0639\u0645\u0627\u0644 \u0645\u0628\u0634\u0648\u0631 \u0639\u062B\u0645\u0627\u0646'
+];
+async function typeText(el,text,ms,cur){
+  const chars=Array.from(text);
+  if(cur) el.after(cur);
+  for(let i=1;i<=chars.length;i++){
+    if(welcomeSkip){ el.textContent=text; return; }
+    el.textContent=chars.slice(0,i).join('');
+    await sleep(ms);
+  }
+}
+const HINT={fr:'choisis la langue et le thème, puis Entrée',en:'pick a language and a theme, then press Enter',es:'elige idioma y tema, luego pulsa Enter'};
+function startWelcome(done){
+  if(window.__welcomeRan) return; window.__welcomeRan=true;
+  const w=document.getElementById('welcome');
+  let seen=window.name==='wlc1'; try{ if(sessionStorage.getItem('welcomed')==='1') seen=true; }catch(e){}
+  if(!w||reduceMotion||seen){ if(w) w.remove(); done(); return; }
+  window.name='wlc1'; try{sessionStorage.setItem('welcomed','1')}catch(e){}
+  document.body.style.overflow='hidden';
+  const hint=document.getElementById('whint'), wtheme=document.getElementById('wtheme'), enter=w.querySelector('.wskip');
+  const wl=[...w.querySelectorAll('[data-wlang]')];
+  const sync=()=>{
+    wl.forEach(b=>b.classList.toggle('on',b.dataset.wlang===currentLang));
+    wtheme.textContent=themebtn.textContent;
+    hint.textContent=typingDone?HINT[currentLang]:'';
+  };
+  let finished=false, typingDone=false;
+  const finish=()=>{
+    if(finished) return; finished=true; welcomeSkip=true;
+    w.classList.add('out'); document.body.style.overflow='';
+    setTimeout(()=>w.remove(),700);
+    done();
+  };
+  wl.forEach(b=>b.addEventListener('click',()=>{ setLang(b.dataset.wlang); sync(); }));
+  wtheme.addEventListener('click',()=>{ themebtn.click(); sync(); });
+  enter.addEventListener('click',finish);
+  addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key==='Escape') finish(); });
+  sync();
+  const cur=document.createElement('span'); cur.className='cursor';
+  const targets=[...w.querySelectorAll('.wt')];
+  (async()=>{
+    for(let i=0;i<targets.length;i++){
+      if(finished) return;
+      await typeText(targets[i],GREET[i],24,cur);
+      await sleep(380);
+    }
+    cur.remove(); typingDone=true; sync(); enter.classList.add('ready');
+  })();
+}
+
+/* ---- frappe des sections quand le lecteur arrive dessus ---- */
+const secData=new Map();
+function prepSections(){
+  if(reduceMotion) return;
+  document.documentElement.classList.add('js-type');
+  document.querySelectorAll('.sec').forEach(sec=>{
+    const cmd=sec.querySelector('.cmdline'); if(!cmd) return;
+    const parts=[...cmd.children].filter(e=>!e.classList.contains('prompt')).map(el=>({el,text:el.textContent}));
+    parts.forEach(pt=>pt.el.textContent='');
+    const rest=[...cmd.parentElement.children].filter(e=>e!==cmd);
+    rest.forEach((e,i)=>{ e.classList.add('rv'); e.style.transitionDelay=(i*70)+'ms'; });
+    secData.set(cmd,{parts,rest});
+  });
+}
+async function runSection(cmd){
+  const {parts,rest}=secData.get(cmd);
+  const cur=document.createElement('span'); cur.className='cursor';
+  for(const pt of parts){ await typeText(pt.el,pt.text,48,cur); }
+  await sleep(250); cur.remove();
+  rest.forEach(e=>e.classList.add('show'));
+  setTimeout(()=>rest.forEach(e=>{ e.classList.remove('rv','show'); e.style.transitionDelay=''; }),1500);
+}
+function watchSections(){
+  if(reduceMotion||!secData.size) return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ io.unobserve(e.target); runSection(e.target); }
+  }),{rootMargin:'0px 0px -18% 0px',threshold:0});
+  secData.forEach((_,cmd)=>io.observe(cmd));
+}
+
+/* ---- fond : pluie de code discrète (0/1, hexa, symboles) ---- */
+function startRain(){
+  if(reduceMotion) return;
+  const cv=document.createElement('canvas'); cv.id='rain'; cv.setAttribute('aria-hidden','true');
+  document.body.prepend(cv);
+  const ctx=cv.getContext('2d'); if(!ctx) return;
+  const CH='01{}[]<>/;=+*#$%&|ABCDEF0123456789';
+  const fs=14, TAIL=9;
+  let w=0,h=0,cols=[],last=0,tick=0,cG='#8FD6A0',cC='#7FCFE0',peak=.16;
+  function readTheme(){
+    const cs=getComputedStyle(document.documentElement);
+    cG=cs.getPropertyValue('--green').trim()||cG; cC=cs.getPropertyValue('--cyan').trim()||cC;
+    peak=document.documentElement.classList.contains('light')?.13:.17;
+  }
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    w=innerWidth; h=innerHeight; cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n=Math.ceil(w/(fs*1.25));
+    cols=Array.from({length:n},(_,i)=>({x:i*fs*1.25+4, y:-Math.random()*h/fs, v:.12+Math.random()*.22, on:Math.random()<.5, c:i%2?0:1, t:Array.from({length:TAIL},()=>CH[Math.random()*CH.length|0])}));
+    ctx.font=fs+'px "JetBrains Mono",ui-monospace,monospace';
+  }
+  function frame(ts){
+    requestAnimationFrame(frame);
+    if(document.hidden||ts-last<42) return; last=ts;
+    if(++tick%90===0) readTheme();
+    ctx.clearRect(0,0,w,h);
+    const half=Math.min(w/2,23*16+24);
+    for(const c of cols){
+      if(!c.on){ if(Math.random()<.004) c.on=true; continue; }
+      c.y+=c.v;
+      if(Math.random()<.18) c.t[Math.random()*TAIL|0]=CH[Math.random()*CH.length|0];
+      const inside=Math.abs(c.x-w/2)<half, k=inside?.3:1;
+      ctx.fillStyle=c.c?cC:cG;
+      for(let j=0;j<TAIL;j++){
+        const y=(c.y-j)*fs; if(y<-fs||y>h+fs) continue;
+        ctx.globalAlpha=peak*k*(1-j/TAIL)*(j===0?1.6:1);
+        ctx.fillText(c.t[j],c.x,y);
+      }
+      if((c.y-TAIL)*fs>h){ c.y=-Math.random()*20; c.on=Math.random()<.7; c.v=.12+Math.random()*.22; }
+    }
+    ctx.globalAlpha=1;
+  }
+  readTheme(); resize(); addEventListener('resize',resize);
+  document.getElementById('themebtn').addEventListener('click',()=>setTimeout(readTheme,30));
+  requestAnimationFrame(frame);
+  requestAnimationFrame(()=>cv.classList.add('on'));
+}
+
+prepSections();
+try{ startWelcome(()=>{ runIntro(); watchSections(); }); }catch(err){ const w0=document.getElementById('welcome'); if(w0) w0.remove(); document.body.style.overflow=''; runIntro(); watchSections(); }
+startRain();
+</script>
+</body>
+</html>
