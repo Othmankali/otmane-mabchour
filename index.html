@@ -199,7 +199,7 @@ html.welcomed #welcome{display:none!important}
 .sigwave .w2{stroke:var(--purple);stroke-dasharray:12 9;opacity:.7;animation:sigflow 11s linear infinite reverse}
 .sigwave .w3{stroke:var(--green);stroke-dasharray:1 10;opacity:.6;animation:sigflow 5s linear infinite}
 @keyframes sigflow{to{stroke-dashoffset:-200}}
-.sec:nth-of-type(even){background:color-mix(in srgb,var(--bg-2) 60%,transparent)}
+.sec:nth-of-type(even){background:color-mix(in srgb,var(--bg-2) 30%,transparent)}
 @media(prefers-reduced-motion:reduce){.sigwave path{animation:none}#rain{display:none}}
 </style>
 </head>
@@ -212,7 +212,6 @@ html.welcomed #welcome{display:none!important}
       <div class="wl"><span class="prompt">$</span><span class="wt" lang="fr"></span></div>
       <div class="wl"><span class="prompt">$</span><span class="wt" lang="en"></span></div>
       <div class="wl"><span class="prompt">$</span><span class="wt" lang="es"></span></div>
-      <div class="wl" dir="rtl"><span class="prompt">$</span><span class="wt" lang="ar"></span></div>
     </div>
     <div class="wctl">
       <span class="wk" id="whint"></span>
@@ -234,7 +233,6 @@ html.welcomed #welcome{display:none!important}
       <a href="#engineering" data-k="nav.eng">engineering</a>
       <a href="#career" data-k="nav.car">career</a>
       <a href="#mobility" data-k="nav.mob">mobility</a>
-      <a href="#engagement" data-k="nav.enga">engagement</a>
       <a href="#activities" data-k="nav.act">activities</a>
       <a href="#contact" data-k="nav.ct">contact</a>
     </nav>
@@ -250,7 +248,6 @@ html.welcomed #welcome{display:none!important}
     <a href="#engineering" data-k="nav.eng">engineering</a>
     <a href="#career" data-k="nav.car">career</a>
     <a href="#mobility" data-k="nav.mob">mobility</a>
-    <a href="#engagement" data-k="nav.enga">engagement</a>
     <a href="#activities" data-k="nav.act">activities</a>
     <a href="#contact" data-k="nav.ct">contact</a>
   </div></div>
@@ -267,17 +264,16 @@ html.welcomed #welcome{display:none!important}
     <h1 id="typed1out" class="typed-wait">Otmane Mabchour — <span class="c" data-k="hero.title">Élève-ingénieur, Sciences du numérique</span></h1>
 
     <div class="ln" style="margin-top:1rem"><span class="prompt">otmane@enseeiht</span><span class="dim">:</span><span class="path">~</span><span class="dim">$ </span><span id="typed2"></span></div>
-    <p class="out typed-wait" id="typed2out" data-k="hero.role">Je construis des systèmes qui relient capteurs, code et monde réel : électronique embarquée, traitement de données, prototypage.</p>
+    <p class="out typed-wait" id="typed2out" data-k="hero.role">Élève ingénieur à l’N7 en informatique et télécommunications, passionné par la cybersécurité et les systèmes embarqués.</p>
 
     <div class="herorow">
       <div class="fieldblock">
         <div class="fl"><span class="fk dim" data-k="f.school">school</span><span class="c">= "ENSEEIHT · N7"</span></div>
         <div class="fl"><span class="fk dim" data-k="f.loc">location</span><span class="c">= "Toulouse, France"</span></div>
         <div class="fl"><span class="fk dim" data-k="f.langs">languages</span><span class="c">= ["AR", "FR", "EN", "ES"]</span></div>
-        <div class="fl"><span class="fk dim" data-k="f.status">status</span><span class="g">= "available for internships"</span></div>
       </div>
       <div class="photowrap-hero">
-        <div class="photoframe"><div class="pic"><img src="assets/photo.jpg" alt="Portrait d'Otmane Mabchour"><div class="photo-scan"></div><div class="focus-bracket"><span></span></div></div><div class="cap" data-k="hero.fig">whoami.jpg</div></div>
+        <div class="photoframe"><div class="pic"><img src="assets/photo.jpg" alt="Portrait d'Otmane Mabchour"><div class="photo-scan"></div><div class="focus-bracket"><span></span></div></div><div class="cap" data-k="hero.fig"></div></div>
       </div>
     </div>
   </div>
@@ -286,13 +282,13 @@ html.welcomed #welcome{display:none!important}
 <section class="sec" id="engineering">
   <div class="wrap">
     <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">engineering.md</span></div>
-    <p class="lede" data-k="eng.lede"># Les outils que j'utilise au quotidien, et ce que j'ai construit avec.</p>
+    <p class="lede" data-k="eng.lede"># Les outils que j'utilise au quotidien.</p>
 
     <div class="skillrow">
       <div class="skillcol"><h3 data-k="eng.s1">systèmes</h3>
         <ul>
           <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" class="skico"><span>Python</span></li>
-          <li><span class="skico badge">Ad</span><span>Ada</span></li>
+          <li><span class="skico badge">Ada</span><span>Ada</span></li>
           <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" class="skico"><span>Linux</span></li>
           <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" class="skico"><span>Git</span></li>
         </ul>
@@ -301,7 +297,7 @@ html.welcomed #welcome{display:none!important}
         <ul>
           <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="" class="skico"><span>NumPy</span></li>
           <li><img src="https://cdn.simpleicons.org/python/11557c" alt="" class="skico"><span>Matplotlib</span></li>
-          <li><span class="skico badge">DB</span><span>SQL</span></li>
+          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" class="skico"><span>SQL</span></li>
         </ul>
       </div>
       <div class="skillcol"><h3 data-k="eng.s3">électronique &amp; prototypage</h3>
@@ -318,13 +314,7 @@ html.welcomed #welcome{display:none!important}
         <div class="thumb"><img src="assets/projet1.jpg" alt="Suiveur solaire" onerror="this.closest('.thumb').style.display='none'"></div>
         <div class="row"><h3 data-k="p1.t">TIPE — Suiveur solaire</h3></div>
         <p data-k="p1.d">Panneau orienté sur un seul axe vers la source lumineuse la plus forte : pont en H, moteur, deux photorésistances.</p>
-        <ul class="tags"><li>arduino</li><li>cpp</li><li>capteurs</li></ul>
-      </div>
-      <div class="out-block">
-        <div class="thumb"><img src="assets/projet2.jpg" alt="" onerror="this.closest('.thumb').style.display='none'"></div>
-        <div class="row"><h3 class="ph" data-k="pp.t1">[nom_du_projet]</h3></div>
-        <p class="ph" data-k="pp.d1">[Le besoin, ta solution, le résultat obtenu en 2–3 lignes.]</p>
-        <ul class="tags"><li class="ph" data-k="pp.tag">[techno]</li></ul>
+        <ul class="tags"><li>loop</li><li>LDR</li><li data-k="tag.sensors">capteurs</li></ul>
       </div>
     </div>
   </div>
@@ -354,31 +344,14 @@ html.welcomed #welcome{display:none!important}
     <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">mobility.yml</span></div>
     <p class="lede" data-k="mob.lede"># langues parlées et projet de mobilité à l'international</p>
     <div class="langtable">
-      <div class="lr"><b data-k="l.ar">arabe</b><span>native</span></div>
+      <div class="lr"><b data-k="l.ar">arabe</b><span data-k="l.native">langue maternelle</span></div>
       <div class="lr"><b data-k="l.fr">français</b><span>B1</span></div>
       <div class="lr"><b data-k="l.en">anglais</b><span>B2</span></div>
       <div class="lr"><b data-k="l.es">espagnol</b><span>A1</span></div>
     </div>
     <div class="out-block">
-      <h3 class="ph" data-k="mob.p1">[ton objectif : semestre, année de césure, double diplôme…]</h3>
-      <p class="ph" data-k="mob.p2">[destinations visées et ce que cette mobilité t'apporterait]</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="engagement">
-  <div class="wrap">
-    <div class="cmdline"><span class="prompt">$</span><span>tail</span> <span class="c">engagement.log</span></div>
-    <p class="lede" data-k="enga.lede"># événements auxquels je participe en dehors des cours</p>
-    <div class="out-block">
-      <div class="row"><h3 data-k="enga.e1t">Festival Futurs proches</h3><span class="date">oct 2026</span></div>
-      <span class="sub">Toulouse</span>
-      <p data-k="enga.e1p">Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.</p>
-    </div>
-    <div class="out-block">
-      <div class="row"><h3 data-k="enga.e2t">Le Procès de King-Kong</h3><span class="date">sept 2026</span></div>
-      <span class="sub">Toulouse</span>
-      <p data-k="enga.e2p">Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.</p>
+      <div class="row"><h3 data-k="mob.p2">Mobilité</h3></div>
+      <p data-k="mob.p2d">Je n’ai aucune idée pour le moment.</p>
     </div>
   </div>
 </section>
@@ -386,9 +359,16 @@ html.welcomed #welcome{display:none!important}
 <section class="sec" id="activities">
   <div class="wrap">
     <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">activities.txt</span></div>
+    <p class="lede" data-k="act.lede"># événements auxquels je participe en dehors des cours</p>
     <div class="out-block">
-      <h3 class="ph" data-k="act.p1">[ta passion principale]</h3>
-      <p class="ph" data-k="act.p2">[niveau, durée de pratique, ce que ça t'apporte]</p>
+      <div class="row"><h3 data-k="act.e1t">Festival Futurs proches</h3><span class="date" data-k="act.e1d">oct 2026</span></div>
+      <span class="sub">Toulouse</span>
+      <p data-k="act.e1p">Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.</p>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3 data-k="act.e2t">Le Procès de King-Kong</h3><span class="date" data-k="act.e2d">sept 2026</span></div>
+      <span class="sub">Toulouse</span>
+      <p data-k="act.e2p">Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.</p>
     </div>
   </div>
 </section>
@@ -448,12 +428,12 @@ function runIntro(){
 /* traductions */
 const D={
  'nav.eng':['engineering','engineering','engineering'],'nav.car':['career','career','career'],
- 'nav.mob':['mobility','mobility','mobility'],'nav.enga':['engagement','engagement','engagement'],
+ 'nav.mob':['mobility','mobility','mobility'],
  'nav.act':['activities','activities','activities'],'nav.ct':['contact','contact','contact'],
  'theme.btn':['--dark','--dark','--dark'],'theme.btn.light':['--light','--light','--light'],
- 'hero.role':["Je construis des systèmes qui relient capteurs, code et monde réel : électronique embarquée, traitement de données, prototypage.",
-   "I build systems that connect sensors, code and the real world: embedded electronics, data processing, prototyping.",
-   "Construyo sistemas que conectan sensores, código y el mundo real: electrónica embebida, procesamiento de datos, prototipado."],
+ 'hero.role':["Élève ingénieur à l’N7 en informatique et télécommunications, passionné par la cybersécurité et les systèmes embarqués.",
+   "Engineering student at N7 (ENSEEIHT) in computer science and telecommunications, passionate about cybersecurity and embedded systems.",
+   "Estudiante de ingeniería en N7 (ENSEEIHT) en informática y telecomunicaciones, apasionado por la ciberseguridad y los sistemas embebidos."],
  'hero.title':['Élève-ingénieur, Sciences du numérique','Engineering student, Digital Sciences','Estudiante de ingeniería, Ciencias Digitales'],
  'hero.fig':['whoami.jpg','whoami.jpg','quiensoy.jpg'],
  'f.school':['school','school','school'],'f.loc':['location','location','location'],
@@ -466,27 +446,26 @@ const D={
  'p1.d':['Panneau orienté sur un seul axe vers la source lumineuse la plus forte : pont en H, moteur, deux photorésistances.',
    'Panel oriented on a single axis toward the strongest light source: H-bridge, motor, two photoresistors.',
    'Panel orientado en un solo eje hacia la fuente de luz más intensa: puente H, motor, dos fotorresistencias.'],
- 'pp.t1':['[nom_du_projet]','[project_name]','[nombre_del_proyecto]'],
- 'pp.d1':['[Le besoin, ta solution, le résultat obtenu en 2–3 lignes.]','[The need, your solution, the result — 2–3 lines.]','[La necesidad, tu solución, el resultado en 2–3 líneas.]'],
- 'pp.tag':['[techno]','[tech]','[tecnología]'],
  'car.cvfr':['./CV_FR.pdf','./CV_FR.pdf','./CV_FR.pdf'],'car.cven':['./CV_EN.pdf','./CV_EN.pdf','./CV_EN.pdf'],
  'car.form1':['Science du numérique','Digital Sciences','Ciencias Digitales'],
  'car.form2':['Classe préparatoire scientifique','Preparatory classes','Clases preparatorias'],
  'mob.lede':['# langues parlées et projet de mobilité à l\u2019international','# languages spoken and international mobility plans','# idiomas hablados y planes de movilidad internacional'],
  'l.ar':['arabe','arabic','árabe'],'l.fr':['français','french','francés'],'l.en':['anglais','english','inglés'],'l.es':['espagnol','spanish','español'],
- 'mob.p1':['[ton objectif : semestre, année de césure, double diplôme…]','[your goal: a semester, gap year, double degree…]','[tu objetivo: un semestre, año sabático, doble titulación…]'],
- 'mob.p2':['[destinations visées et ce que cette mobilité t\u2019apporterait]','[target destinations and what this mobility would bring you]','[destinos previstos y lo que esta movilidad te aportaría]'],
- 'enga.lede':['# événements auxquels je participe en dehors des cours','# events I take part in outside of class','# eventos en los que participo fuera de clase'],
- 'enga.e1t':['Festival Futurs proches','Near Futures Festival','Festival Futuros Próximos'],
- 'enga.e1p':["Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.",
+ 'mob.p2':['Mobilité','Mobility','Movilidad'],
+ 'mob.p2d':['Je n’ai aucune idée pour le moment.','I don’t have any idea for the moment.','No tengo ninguna idea por el momento.'],
+ 'act.lede':['# événements auxquels je participe en dehors des cours','# events I take part in outside of class','# eventos en los que participo fuera de clase'],
+ 'act.e1t':['Festival Futurs proches','Near Futures Festival','Festival Futuros Próximos'],
+ 'act.e1d':['oct 2026','Oct 2026','oct 2026'],
+ 'act.e1p':["Cet événement gratuit propose des ateliers pratiques, des débats et des animations artistiques pour mobiliser les étudiants, les personnels universitaires et le grand public autour des enjeux climatiques et de solidarité.",
    'This free event offers hands-on workshops, talks and artistic activities to engage students, university staff and the public around climate and solidarity issues.',
    'Este evento gratuito ofrece talleres prácticos, debates y actividades artísticas para movilizar a estudiantes, personal universitario y al público en torno al clima y la solidaridad.'],
- 'enga.e2t':['Le Procès de King-Kong','The Trial of King Kong','El Juicio de King-Kong'],
- 'enga.e2p':['Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.',
+ 'act.e2t':['Le Procès de King-Kong','The Trial of King Kong','El Juicio de King-Kong'],
+ 'act.e2d':['sept 2026','Sep 2026','sep 2026'],
+ 'act.e2p':['Une pièce de théâtre interactive pour les étudiants, qui se déroule comme un tribunal où le public participe.',
    'An interactive play for students that unfolds like a courtroom, with the audience taking part.',
    'Una obra de teatro interactiva para estudiantes que se desarrolla como un juicio en el que participa el público.'],
- 'act.p1':['[ta passion principale]','[your main passion]','[tu pasión principal]'],
- 'act.p2':['[niveau, durée de pratique, ce que ça t\u2019apporte]','[level, years of practice, what it brings you]','[nivel, años de práctica, lo que te aporta]'],
+ 'tag.sensors':['capteurs','sensors','sensores'],
+ 'l.native':['langue maternelle','native','lengua materna'],
  'ct.lede':['# pour un stage, un projet ou simplement échanger','# for an internship, a project, or just to say hello','# para unas prácticas, un proyecto o simplemente para saludar'],
  'ct.mail':['mail','mail','correo'],'ct.tel':['tel','tel','tel'],
  'foot.made':['ENSEEIHT · Toulouse','ENSEEIHT · Toulouse','ENSEEIHT · Toulouse']
@@ -603,19 +582,19 @@ function startRain(){
   const cv=document.createElement('canvas'); cv.id='rain'; cv.setAttribute('aria-hidden','true');
   document.body.prepend(cv);
   const ctx=cv.getContext('2d'); if(!ctx) return;
-  const CH='01{}[]<>/;=+*#$%&|ABCDEF0123456789';
-  const fs=14, TAIL=9;
-  let w=0,h=0,cols=[],last=0,tick=0,cG='#8FD6A0',cC='#7FCFE0',peak=.16;
+  const CH='01010101101{}[]<>/;=+#$%ABCDEF';
+  const fs=15, TAIL=14;
+  let w=0,h=0,cols=[],last=0,tick=0,cG='#8FD6A0',cC='#7FCFE0',cH='#F2F4FF',peak=.38;
   function readTheme(){
     const cs=getComputedStyle(document.documentElement);
-    cG=cs.getPropertyValue('--green').trim()||cG; cC=cs.getPropertyValue('--cyan').trim()||cC;
-    peak=document.documentElement.classList.contains('light')?.13:.17;
+    cG=cs.getPropertyValue('--green').trim()||cG; cC=cs.getPropertyValue('--cyan').trim()||cC; cH=cs.getPropertyValue('--fg-bright').trim()||cH;
+    peak=document.documentElement.classList.contains('light')?.30:.38;
   }
   function resize(){
     const dpr=Math.min(devicePixelRatio||1,2);
     w=innerWidth; h=innerHeight; cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
     const n=Math.ceil(w/(fs*1.25));
-    cols=Array.from({length:n},(_,i)=>({x:i*fs*1.25+4, y:-Math.random()*h/fs, v:.12+Math.random()*.22, on:Math.random()<.5, c:i%2?0:1, t:Array.from({length:TAIL},()=>CH[Math.random()*CH.length|0])}));
+    cols=Array.from({length:n},(_,i)=>({x:i*fs*1.25+4, y:-Math.random()*h/fs, v:.2+Math.random()*.3, on:Math.random()<.85, c:i%2?0:1, t:Array.from({length:TAIL},()=>CH[Math.random()*CH.length|0])}));
     ctx.font=fs+'px "JetBrains Mono",ui-monospace,monospace';
   }
   function frame(ts){
@@ -625,17 +604,17 @@ function startRain(){
     ctx.clearRect(0,0,w,h);
     const half=Math.min(w/2,23*16+24);
     for(const c of cols){
-      if(!c.on){ if(Math.random()<.004) c.on=true; continue; }
+      if(!c.on){ if(Math.random()<.02) c.on=true; continue; }
       c.y+=c.v;
       if(Math.random()<.18) c.t[Math.random()*TAIL|0]=CH[Math.random()*CH.length|0];
-      const inside=Math.abs(c.x-w/2)<half, k=inside?.3:1;
-      ctx.fillStyle=c.c?cC:cG;
+      const inside=Math.abs(c.x-w/2)<half, k=inside?.35:1;
       for(let j=0;j<TAIL;j++){
         const y=(c.y-j)*fs; if(y<-fs||y>h+fs) continue;
-        ctx.globalAlpha=peak*k*(1-j/TAIL)*(j===0?1.6:1);
+        ctx.fillStyle=j===0?cH:(c.c?cC:cG);
+        ctx.globalAlpha=Math.min(1,peak*k*(1-j/TAIL)*(j===0?1.8:1));
         ctx.fillText(c.t[j],c.x,y);
       }
-      if((c.y-TAIL)*fs>h){ c.y=-Math.random()*20; c.on=Math.random()<.7; c.v=.12+Math.random()*.22; }
+      if((c.y-TAIL)*fs>h){ c.y=-Math.random()*20; c.on=Math.random()<.9; c.v=.2+Math.random()*.3; }
     }
     ctx.globalAlpha=1;
   }
