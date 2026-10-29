@@ -584,11 +584,11 @@ function startRain(){
   const ctx=cv.getContext('2d'); if(!ctx) return;
   const CH='01010101101{}[]<>/;=+#$%ABCDEF';
   const fs=15, TAIL=14;
-  let w=0,h=0,cols=[],last=0,tick=0,cG='#8FD6A0',cC='#7FCFE0',cH='#F2F4FF',peak=.38;
+  let w=0,h=0,cols=[],last=0,tick=0,cG='#8FD6A0',cC='#7FCFE0',cH='#F2F4FF',peak=.2;
   function readTheme(){
     const cs=getComputedStyle(document.documentElement);
     cG=cs.getPropertyValue('--green').trim()||cG; cC=cs.getPropertyValue('--cyan').trim()||cC; cH=cs.getPropertyValue('--fg-bright').trim()||cH;
-    peak=document.documentElement.classList.contains('light')?.30:.38;
+    peak=document.documentElement.classList.contains('light')?.15:.2;
   }
   function resize(){
     const dpr=Math.min(devicePixelRatio||1,2);
@@ -607,11 +607,11 @@ function startRain(){
       if(!c.on){ if(Math.random()<.02) c.on=true; continue; }
       c.y+=c.v;
       if(Math.random()<.18) c.t[Math.random()*TAIL|0]=CH[Math.random()*CH.length|0];
-      const inside=Math.abs(c.x-w/2)<half, k=inside?.35:1;
+      const inside=Math.abs(c.x-w/2)<half, k=inside?.25:1;
       for(let j=0;j<TAIL;j++){
         const y=(c.y-j)*fs; if(y<-fs||y>h+fs) continue;
         ctx.fillStyle=j===0?cH:(c.c?cC:cG);
-        ctx.globalAlpha=Math.min(1,peak*k*(1-j/TAIL)*(j===0?1.8:1));
+        ctx.globalAlpha=Math.min(1,peak*k*(1-j/TAIL)*(j===0?1.2:1));
         ctx.fillText(c.t[j],c.x,y);
       }
       if((c.y-TAIL)*fs>h){ c.y=-Math.random()*20; c.on=Math.random()<.9; c.v=.2+Math.random()*.3; }
