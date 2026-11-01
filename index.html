@@ -201,6 +201,15 @@ html.welcomed #welcome{display:none!important}
 @keyframes sigflow{to{stroke-dashoffset:-200}}
 .sec:nth-of-type(even){background:color-mix(in srgb,var(--bg-2) 30%,transparent)}
 @media(prefers-reduced-motion:reduce){.sigwave path{animation:none}#rain{display:none}}
+
+/* vidéo d'elevator pitch (protégée par mot de passe) */
+[hidden]{display:none!important}
+.pitchbox{border:1px solid var(--rule);background:var(--panel);padding:1.1rem 1.25rem}
+.pitchvideo{aspect-ratio:16/9;width:100%;background:#000;border:1px solid var(--rule);margin-bottom:.8rem;display:grid;place-items:center;color:#aaa;font-size:.85rem}
+.pitchvideo video,.pitchvideo iframe{width:100%;height:100%;border:0;background:#000}
+
+/* mobilité : destinations */
+.cc{display:inline-block;font-size:.68rem;font-weight:600;border:1px solid var(--cyan);color:var(--cyan);padding:0 .35rem;margin-right:.55rem;vertical-align:.08em}
 </style>
 </head>
 <body>
@@ -232,6 +241,7 @@ html.welcomed #welcome{display:none!important}
     <nav class="links" aria-label="Navigation principale">
       <a href="#engineering" data-k="nav.eng">engineering</a>
       <a href="#career" data-k="nav.car">career</a>
+      <a href="#pitch" data-k="nav.pitch">pitch</a>
       <a href="#mobility" data-k="nav.mob">mobility</a>
       <a href="#activities" data-k="nav.act">activities</a>
       <a href="#contact" data-k="nav.ct">contact</a>
@@ -247,6 +257,7 @@ html.welcomed #welcome{display:none!important}
   <div id="mmenu"><div>
     <a href="#engineering" data-k="nav.eng">engineering</a>
     <a href="#career" data-k="nav.car">career</a>
+      <a href="#pitch" data-k="nav.pitch">pitch</a>
     <a href="#mobility" data-k="nav.mob">mobility</a>
     <a href="#activities" data-k="nav.act">activities</a>
     <a href="#contact" data-k="nav.ct">contact</a>
@@ -339,6 +350,18 @@ html.welcomed #welcome{display:none!important}
   </div>
 </section>
 
+<section class="sec" id="pitch">
+  <div class="wrap">
+    <div class="cmdline"><span class="prompt">$</span><span>open</span> <span class="c">elevator_pitch.mp4</span></div>
+    <p class="lede" data-k="pitch.lede"># ma vidéo d'elevator pitch</p>
+    <div class="pitchbox">
+      <div class="pitchvideo" id="pitchmedia">
+        <video controls playsinline preload="metadata" src="assets/pitch.mp4" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:T('pitch.missing')}))"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="mobility">
   <div class="wrap">
     <div class="cmdline"><span class="prompt">$</span><span>cat</span> <span class="c">mobility.yml</span></div>
@@ -350,8 +373,28 @@ html.welcomed #welcome{display:none!important}
       <div class="lr"><b data-k="l.es">espagnol</b><span>A1</span></div>
     </div>
     <div class="out-block">
-      <div class="row"><h3 data-k="mob.p2">Mobilité</h3></div>
-      <p data-k="mob.p2d">Je n’ai aucune idée pour le moment.</p>
+      <div class="row"><h3 data-k="mob.p2">Objectif : double diplôme ou semestre à l’étranger</h3></div>
+      <p data-k="mob.p2d">Pendant mes études à l’N7, je vise une expérience internationale : un double diplôme ou, à défaut, un semestre d’échange dans l’une de ces trois écoles. Trois pays, trois langues, un même objectif : apprendre autrement.</p>
+    </div>
+
+    <div class="cmdline" style="margin-top:1.8rem"><span class="prompt">$</span><span>ls</span> <span class="c">destinations/</span></div>
+    <div class="out-block">
+      <div class="row"><h3><span class="cc">CA</span>Polytechnique Montréal</h3><span class="date" data-k="d1.l">français</span></div>
+      <span class="sub" data-k="d1.c">Montréal, Canada</span>
+      <p data-k="d1.d">École d’ingénieurs francophone en Amérique du Nord : l’occasion de progresser en français tout en découvrant un autre continent.</p>
+      <ul class="tags"><li data-k="mob.t1">double diplôme</li><li data-k="mob.t2">semestre</li></ul>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3><span class="cc">UK</span>Imperial College London</h3><span class="date" data-k="d2.l">anglais</span></div>
+      <span class="sub" data-k="d2.c">Londres, Royaume-Uni</span>
+      <p data-k="d2.d">Université de référence en sciences et ingénierie, un environnement exigeant pour perfectionner mon anglais technique.</p>
+      <ul class="tags"><li data-k="mob.t1">double diplôme</li><li data-k="mob.t2">semestre</li></ul>
+    </div>
+    <div class="out-block">
+      <div class="row"><h3><span class="cc">ES</span>UPV — Universitat Politècnica de València</h3><span class="date" data-k="d3.l">espagnol</span></div>
+      <span class="sub" data-k="d3.c">Valence, Espagne</span>
+      <p data-k="d3.d">Grande université polytechnique espagnole : le meilleur cadre pour passer de l’espagnol A1 à un niveau vraiment utile.</p>
+      <ul class="tags"><li data-k="mob.t1">double diplôme</li><li data-k="mob.t2">semestre</li></ul>
     </div>
   </div>
 </section>
@@ -451,8 +494,23 @@ const D={
  'car.form2':['Classe préparatoire scientifique','Preparatory classes','Clases preparatorias'],
  'mob.lede':['# langues parlées et projet de mobilité à l\u2019international','# languages spoken and international mobility plans','# idiomas hablados y planes de movilidad internacional'],
  'l.ar':['arabe','arabic','árabe'],'l.fr':['français','french','francés'],'l.en':['anglais','english','inglés'],'l.es':['espagnol','spanish','español'],
- 'mob.p2':['Mobilité','Mobility','Movilidad'],
- 'mob.p2d':['Je n’ai aucune idée pour le moment.','I don’t have any idea for the moment.','No tengo ninguna idea por el momento.'],
+ 'mob.p2':['Objectif : double diplôme ou semestre à l’étranger','Goal: a double degree or a semester abroad','Objetivo: doble titulación o un semestre en el extranjero'],
+ 'mob.p2d':['Pendant mes études à l’N7, je vise une expérience internationale : un double diplôme ou, à défaut, un semestre d’échange dans l’une de ces trois écoles. Trois pays, trois langues, un même objectif : apprendre autrement.',
+   'During my studies at N7, I am aiming for an international experience: a double degree or, failing that, an exchange semester at one of these three schools. Three countries, three languages, one goal: learning differently.',
+   'Durante mis estudios en N7, aspiro a una experiencia internacional: una doble titulación o, en su defecto, un semestre de intercambio en una de estas tres escuelas. Tres países, tres idiomas, un mismo objetivo: aprender de otra manera.'],
+ 'mob.t1':['double diplôme','double degree','doble titulación'],'mob.t2':['semestre','semester','semestre'],
+ 'd1.l':['français','french','francés'],'d1.c':['Montréal, Canada','Montreal, Canada','Montreal, Canadá'],
+ 'd1.d':['École d’ingénieurs francophone en Amérique du Nord : l’occasion de progresser en français tout en découvrant un autre continent.',
+   'French-language engineering school in North America: a chance to improve my French while discovering another continent.',
+   'Escuela de ingeniería francófona en Norteamérica: una ocasión para mejorar mi francés descubriendo otro continente.'],
+ 'd2.l':['anglais','english','inglés'],'d2.c':['Londres, Royaume-Uni','London, United Kingdom','Londres, Reino Unido'],
+ 'd2.d':['Université de référence en sciences et ingénierie, un environnement exigeant pour perfectionner mon anglais technique.',
+   'A leading university in science and engineering, a demanding setting to sharpen my technical English.',
+   'Universidad de referencia en ciencias e ingeniería, un entorno exigente para perfeccionar mi inglés técnico.'],
+ 'd3.l':['espagnol','spanish','español'],'d3.c':['Valence, Espagne','Valencia, Spain','Valencia, España'],
+ 'd3.d':['Grande université polytechnique espagnole : le meilleur cadre pour passer de l’espagnol A1 à un niveau vraiment utile.',
+   'A major Spanish polytechnic university: the best setting to take my Spanish from A1 to a genuinely useful level.',
+   'Gran universidad politécnica española: el mejor marco para pasar del español A1 a un nivel realmente útil.'],
  'act.lede':['# événements auxquels je participe en dehors des cours','# events I take part in outside of class','# eventos en los que participo fuera de clase'],
  'act.e1t':['Festival Futurs proches','Near Futures Festival','Festival Futuros Próximos'],
  'act.e1d':['oct 2026','Oct 2026','oct 2026'],
@@ -468,7 +526,10 @@ const D={
  'l.native':['langue maternelle','native','lengua materna'],
  'ct.lede':['# pour un stage, un projet ou simplement échanger','# for an internship, a project, or just to say hello','# para unas prácticas, un proyecto o simplemente para saludar'],
  'ct.mail':['mail','mail','correo'],'ct.tel':['tel','tel','tel'],
- 'foot.made':['ENSEEIHT · Toulouse','ENSEEIHT · Toulouse','ENSEEIHT · Toulouse']
+ 'foot.made':['ENSEEIHT · Toulouse','ENSEEIHT · Toulouse','ENSEEIHT · Toulouse'],
+ 'nav.pitch':['pitch','pitch','pitch'],
+ 'pitch.lede':["# ma vidéo d'elevator pitch",'# my elevator pitch video','# mi vídeo de elevator pitch'],
+ 'pitch.missing':['vidéo introuvable.','video not found.','vídeo no encontrado.']
 };
 function applyLangToThemeBtn(){
   const l=currentLang, i={fr:0,en:1,es:2}[l];
@@ -479,6 +540,7 @@ function setLang(l){
   currentLang=l;
   const i={fr:0,en:1,es:2}[l];
   document.querySelectorAll('[data-k]').forEach(el=>{const k=el.dataset.k; if(D[k]) el.textContent=D[k][i]});
+  document.querySelectorAll('[data-kp]').forEach(el=>{const k=el.dataset.kp; if(D[k]) el.placeholder=D[k][i]});
   document.documentElement.lang=l;
   document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on', b.dataset.lang===l));
   applyLangToThemeBtn();
@@ -623,6 +685,8 @@ function startRain(){
   requestAnimationFrame(frame);
   requestAnimationFrame(()=>cv.classList.add('on'));
 }
+
+const T=k=>D[k][{fr:0,en:1,es:2}[currentLang]];
 
 function photoFx(){ const el=document.querySelector('.photowrap-hero'); if(el) el.classList.add('fx'); }
 prepSections();
